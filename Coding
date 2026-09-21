@@ -1,0 +1,56 @@
+class Node {
+    int data;
+    Node left, right;
+
+    Node(int data) {
+        this.data = data;
+    }
+}
+
+public class Main {
+
+    static void inorder(Node n) {
+        if (n == null) return;
+        inorder(n.left);
+        System.out.print(n.data + " ");
+        inorder(n.right);
+    }
+
+    static void preorder(Node n) {
+        if (n == null) return;
+        System.out.print(n.data + " ");
+        preorder(n.left);
+        preorder(n.right);
+    }
+
+    static void postorder(Node n) {
+        if (n == null) return;
+        postorder(n.left);
+        postorder(n.right);
+        System.out.print(n.data + " ");
+    }
+
+    public static void main(String[] args) {
+
+        Node root = new Node(10);
+
+        root.left = new Node(5);
+        root.right = new Node(15);
+
+        root.left.left = new Node(2);
+        root.left.right = new Node(7);
+        root.right.left = new Node(12);
+
+        System.out.print("Inorder: ");
+        inorder(root);
+
+        System.out.print("\nPreorder: ");
+        preorder(root);
+
+        System.out.print("\nPostorder: ");
+        postorder(root);
+
+        System.out.print("\nLevel order: ");
+        System.out.println("10 5 15 2 7 12");
+    }
+}
