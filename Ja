@@ -1,0 +1,55 @@
+import java.util.Scanner;
+
+public class BloodData {
+
+    private String bloodType;
+    private String rhFactor;
+
+    public void setBloodType(String bt) {
+        bloodType = bt;
+    }
+
+    public void setRhFactor(String rh) {
+        rhFactor = rh;
+    }
+
+    public String getBloodType() {
+        return bloodType;
+    }
+
+    public String getRhFactor() {
+        return rhFactor;
+    }
+
+    public BloodData(String bt, String rh) {
+        bloodType = bt;
+        rhFactor = rh;
+    }
+
+    public void display() {
+        System.out.println(getBloodType() + getRhFactor()
+                + " is added to the blood bank.");
+    }
+
+    public static void main(String[] args) {
+        Scanner input = new Scanner(System.in);
+
+        System.out.print("Enter blood type of patient: ");
+        String bt = input.nextLine();
+
+        System.out.print("Enter the Rhesus factor (+ or -): ");
+        String rh = input.nextLine();
+
+        BloodData bd;
+
+        if (!bt.isEmpty() && !rh.isEmpty()) {
+            bd = new BloodData(bt, rh);
+        } else {
+            bd = new BloodData("O", "+");
+        }
+
+        bd.display();
+
+        input.close();
+    }
+}
